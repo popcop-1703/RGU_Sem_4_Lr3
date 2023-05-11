@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace Laboratorka_3
 {
@@ -19,6 +20,7 @@ namespace Laboratorka_3
             InitializeComponent();
         }
         Station station1 = Station.GetStationInstance();
+        bool openCloseLib, openCloseBook = false;
         public int flag = 0;
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -41,90 +43,9 @@ namespace Laboratorka_3
 
             {
 
-
                 listBox1.Items.Insert(0, "");
                 station1.StationName = Convert.ToString(textBox1.Text);
                 //открываем или закрываем вокзал
-                if (textBox5.Text == "1")
-                {
-                    station1.VokzalWork = true;
-
-                    textBox3.BackColor = Color.White;
-                    textBox3.Enabled = true;
-                    textBox2.BackColor = Color.White;
-                    textBox2.Enabled = true;
-                    textBox4.BackColor = Color.White;
-                    textBox4.Enabled = true;
-                    textBox6.BackColor = Color.White;
-                    textBox6.Enabled = true;
-
-                }
-                else if (textBox5.Text == "0")
-                {
-                    station1.VokzalWork = false;
-
-                    textBox3.BackColor = Color.Gray;
-                    textBox3.Enabled = false;
-                    textBox4.BackColor = Color.Gray;
-                    textBox4.Enabled = false;
-                    textBox6.BackColor = Color.Gray;
-                    textBox6.Enabled = false;
-                    station1.LuggageWorkOff();
-
-                }
-                else if (textBox5.Text == "")
-                {
-                    station1.VokzalWork = false;
-
-                    textBox3.BackColor = Color.Gray;
-                    textBox3.Enabled = false;
-                    textBox4.BackColor = Color.Gray;
-                    textBox4.Enabled = false;
-                    textBox6.BackColor = Color.Gray;
-                    textBox6.Enabled = true;
-                    station1.LuggageWorkOff();
-                }
-
-                else
-                {
-                    MessageBox.Show("Введите цифры '1' или '0', \nИные значения недопустимы в данном поле", "Проверьте данные и повторите попытку");
-                    textBox2.Text = "";
-                    listBox1.Items.Clear();
-                }
-
-
-
-
-                //открываем или закрываем отделение
-                if (textBox2.Text == "2" && station1.VokzalWork == true)
-                {
-                    station1.LuggageWorkOn();
-                    textBox2.Text = "";
-                }
-                else if (textBox2.Text == "3")
-                {
-                    station1.LuggageWorkOff();
-                    textBox2.Text = "";
-                }
-                else if (station1.VokzalWork == false)
-                {
-                    station1.LuggageWorkOff();
-                    textBox2.Text = "";
-                    textBox2.BackColor = Color.Gray;
-                    textBox2.Enabled = false;
-
-                }
-                else if (textBox2.Text == "")
-                {
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Введите цифры '2' или '3', \nИные значения недопустимы в данном поле", "Проверьте данные и повторите попытку");
-                    textBox2.Text = "";
-                    listBox1.Items.Clear();
-                }
 
                 //меняем вместимость отделения
                 try
@@ -220,9 +141,68 @@ namespace Laboratorka_3
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
             flag += 1;
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openCloseLib = !openCloseLib;
+
+            if (openCloseLib == true)
+            {
+                station1.VokzalWork = true;
+                button3.BackColor = Color.White;
+                button3.Enabled = true;
+                textBox3.BackColor = Color.White;
+                textBox3.Enabled = true;
+                textBox4.BackColor = Color.White;
+                textBox4.Enabled = true;
+                textBox6.BackColor = Color.White;
+                textBox6.Enabled = true;
+
+            }
+            else if (openCloseLib == false)
+            {
+                station1.VokzalWork = false;
+                button3.BackColor = Color.Gray;
+                button3.Enabled = false;
+                textBox3.BackColor = Color.Gray;
+                textBox3.Enabled = false;
+                textBox4.BackColor = Color.Gray;
+                textBox4.Enabled = false;
+                textBox6.BackColor = Color.Gray;
+                textBox6.Enabled = false;
+                station1.LuggageWorkOff();
+
+            }
+
+            else
+            {
+                MessageBox.Show("Введите цифры '1' или '0', \nИные значения недопустимы в данном поле", "Проверьте данные и повторите попытку");
+                listBox1.Items.Clear();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            openCloseBook = !openCloseBook;
+            //открываем или закрываем отделение
+            if (openCloseBook == true && station1.VokzalWork == true)
+            {
+                station1.LuggageWorkOn();
+                textBox4.BackColor = Color.White;
+                textBox4.Enabled = true;
+                textBox6.BackColor = Color.White;
+                textBox6.Enabled = true;
+            }
+            else if (openCloseBook == false)
+            {
+                station1.LuggageWorkOff();
+                textBox4.BackColor = Color.Gray;
+                textBox4.Enabled = false;
+                textBox6.BackColor = Color.Gray;
+                textBox6.Enabled = false;
+            }
         }
     }
 }

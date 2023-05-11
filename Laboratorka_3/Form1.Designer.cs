@@ -35,17 +35,16 @@
             label3 = new Label();
             label4 = new Label();
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            textBox5 = new TextBox();
             label10 = new Label();
             textBox6 = new TextBox();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -90,9 +89,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(12, 211);
             label2.Name = "label2";
-            label2.Size = new Size(256, 28);
+            label2.Size = new Size(200, 28);
             label2.TabIndex = 3;
-            label2.Text = "Открыть(2)/Закрыть(3)";
+            label2.Text = "Открыть/Закрыть";
             // 
             // label3
             // 
@@ -121,14 +120,6 @@
             textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(500, 56);
             textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(283, 211);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(51, 46);
-            textBox2.TabIndex = 9;
             // 
             // textBox3
             // 
@@ -170,9 +161,9 @@
             label8.AutoSize = true;
             label8.Location = new Point(12, 112);
             label8.Name = "label8";
-            label8.Size = new Size(256, 28);
+            label8.Size = new Size(200, 28);
             label8.TabIndex = 14;
-            label8.Text = "Открыть(1)/Закрыть(0)";
+            label8.Text = "Открыть/Закрыть";
             // 
             // label9
             // 
@@ -182,14 +173,6 @@
             label9.Size = new Size(135, 28);
             label9.TabIndex = 15;
             label9.Text = "библиотеку";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(283, 117);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(51, 43);
-            textBox5.TabIndex = 17;
             // 
             // label10
             // 
@@ -210,12 +193,23 @@
             // 
             // button2
             // 
-            button2.Location = new Point(349, 117);
+            button2.Location = new Point(256, 111);
             button2.Name = "button2";
-            button2.Size = new Size(116, 43);
+            button2.Size = new Size(51, 43);
             button2.TabIndex = 20;
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(257, 211);
+            button3.Name = "button3";
+            button3.Size = new Size(50, 38);
+            button3.TabIndex = 21;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 
@@ -223,17 +217,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSlateGray;
             ClientSize = new Size(1209, 605);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(textBox6);
             Controls.Add(label10);
-            Controls.Add(textBox5);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
-            Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -259,16 +252,15 @@
         private Label label3;
         private Label label4;
         private TextBox textBox1;
-        private TextBox textBox2;
         private TextBox textBox3;
         private TextBox textBox4;
         private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
-        private TextBox textBox5;
         private Label label10;
         private TextBox textBox6;
         private Button button2;
+        private Button button3;
     }
 }
